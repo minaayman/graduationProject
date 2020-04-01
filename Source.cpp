@@ -1265,5 +1265,6 @@ int main()
     cout << endl << "get average array" << endl;
     printArray(arrGetAverage, 1, 4);
     printArray(arrTraing, 1000, 3);
+
 }
 }
