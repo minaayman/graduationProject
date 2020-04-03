@@ -795,30 +795,7 @@ int main()
 
 
 
-    /* arrPinsCoordinates[48][0] = 12;  arrPinsCoordinates[48][1] = 1; arrPinsCoordinates[48][2] = 1; arrPinsCoordinates[48][3] = 0;
-     arrPinsCoordinates[49][0] = 12;  arrPinsCoordinates[49][1] = 2; arrPinsCoordinates[49][2] = 4; arrPinsCoordinates[49][3] = 0;
-     arrPinsCoordinates[50][0] = 12;  arrPinsCoordinates[50][1] = 3; arrPinsCoordinates[50][2] = 0; arrPinsCoordinates[50][3] = 4;
-     arrPinsCoordinates[51][0] = 12;  arrPinsCoordinates[51][1] = 4; arrPinsCoordinates[51][2] = 0; arrPinsCoordinates[51][3] = 1;
-     arrPinsCoordinates[52][0] = 12;  arrPinsCoordinates[52][1] = 5; arrPinsCoordinates[52][2] = 1; arrPinsCoordinates[52][3] = 6;
-     arrPinsCoordinates[53][0] = 12;  arrPinsCoordinates[53][1] = 6; arrPinsCoordinates[53][2] = 4; arrPinsCoordinates[53][3] = 6;
-
-
-     arrPinsCoordinates[54][0] = 22;  arrPinsCoordinates[54][1] = 1; arrPinsCoordinates[54][2] = 1.25; arrPinsCoordinates[54][3] = 15;
-     arrPinsCoordinates[55][0] = 22;  arrPinsCoordinates[55][1] = 2; arrPinsCoordinates[55][2] = 3.75; arrPinsCoordinates[55][3] = 15;
-     arrPinsCoordinates[56][0] = 22;  arrPinsCoordinates[56][1] = 3; arrPinsCoordinates[56][2] = 1.25; arrPinsCoordinates[56][3] = 0;
-     arrPinsCoordinates[57][0] = 22;  arrPinsCoordinates[57][1] = 4; arrPinsCoordinates[57][2] = 3.75; arrPinsCoordinates[57][3] = 0;
-     arrPinsCoordinates[58][0] = 22;  arrPinsCoordinates[58][1] = 5; arrPinsCoordinates[58][2] = 5;    arrPinsCoordinates[58][3] = 10;
-     arrPinsCoordinates[59][0] = 22;  arrPinsCoordinates[59][1] = 6; arrPinsCoordinates[59][2] = 5;    arrPinsCoordinates[59][3] = 2.5;
-     arrPinsCoordinates[60][0] = 22;  arrPinsCoordinates[60][1] = 7; arrPinsCoordinates[60][2] = 0;    arrPinsCoordinates[60][3] = 10;
-     arrPinsCoordinates[61][0] = 22;  arrPinsCoordinates[61][1] = 8; arrPinsCoordinates[61][2] = 0;    arrPinsCoordinates[61][3] = 2.5;
-     */
-
-
-     /* arrPinsCoordinates[62][0] = 71;  arrPinsCoordinates[62][1] = 1; arrPinsCoordinates[62][2] = 10 ; arrPinsCoordinates[62][3] = 6;
-      arrPinsCoordinates[63][0] = 71;  arrPinsCoordinates[63][1] = 2; arrPinsCoordinates[63][2] = 10;  arrPinsCoordinates[63][3] = 12;
-      arrPinsCoordinates[64][0] = 71;  arrPinsCoordinates[64][1] = 3; arrPinsCoordinates[64][2] = 10;  arrPinsCoordinates[64][3] = 18;
-      arrPinsCoordinates[65][0] = 71;  arrPinsCoordinates[65][1] = 4; arrPinsCoordinates[65][2] = 10;  arrPinsCoordinates[65][3] = 24; */
-
+   
     arrPinsCoordinates[52][0] = 71;  arrPinsCoordinates[52][1] = 1; arrPinsCoordinates[52][2] = 10;  arrPinsCoordinates[52][3] = 6;
     arrPinsCoordinates[53][0] = 71;  arrPinsCoordinates[53][1] = 2; arrPinsCoordinates[53][2] = 10;  arrPinsCoordinates[53][3] = 12;
     arrPinsCoordinates[54][0] = 71;  arrPinsCoordinates[54][1] = 3; arrPinsCoordinates[54][2] = 10;  arrPinsCoordinates[54][3] = 18;
@@ -904,9 +881,9 @@ int main()
 
             ///////////////////////////////////////////////////////////coefficients of simulated annealling cost function////////////////////////////////////////////////
 
-            float aold = 1;
+            float aold = 10;
             float bold = 0.2;
-            float cold = 0.1;  ////// fe bug lama 2a3mel optimization 3al thermal distance bs
+            float cold = 0.01;  ////// fe bug lama 2a3mel optimization 3al thermal distance bs
             float dold = 0;
 
             //  cout << endl << " Lnorm=" << endl << Lnorm << endl << "  Anorm=" << endl << Anorm << endl << "  Tnorm=" << endl << Tnorm << endl << "  ASPnorm=" << endl << ASPnorm;
