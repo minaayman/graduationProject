@@ -1,6 +1,6 @@
 #include "SDL.h"
 #include <iostream>
-#include <cstdlib>
+#include <stdlib.h>
 #include <time.h>
 #include<math.h>
 #undef main
@@ -548,7 +548,6 @@ int main()
     int g = 0;
     int  randModuleSelection1;
     int  randModuleSelection2;
-    int  trainingIterations;
 
     /////////////////////////////////////////////////////////identfying arrays /////////////////////////////////////////////////////////////////////////////////////
 
@@ -571,16 +570,12 @@ int main()
     float** arrGetAverage;
     float** arrMax;
     float** arrMin;
-    float** arrTraing;
-    float** arrArea;
-    float** arrLength;
-    float** arrThermal;
-    float** arrCoordinatesTrain;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     int arrHpwlnew[5] = { 0 };
     int arrModulesInConnectionCorrdinates[5][2];
     float maxX = 0; float minX = 10000; float maxY = 0; float minY = 10000; int Temp = 1000; int frozen = 0; double Lold = 0; double Lnew = 0;
+
     int swapTimes = 1000;/////// swap times per gate
     int deltaL = 0;
 
@@ -628,39 +623,10 @@ int main()
     arrGetAverage = generateArray(1, 4);
     arrMax = generateArray(1, 4);
     arrMin = generateArray(1, 4);
-    arrTraing = generateArray(1000, 3);
-    arrArea = generateArray(1000, 1);
-    arrLength = generateArray(1000, 1);
-    arrThermal = generateArray(1000, 1);
-    arrCoordinatesTrain = generateArray(1000, 14);
     // arrGenerateCombinations = generateArray(mul, noOfModules); //me3arafhaa ta7t 3ashan me7tag 2a7seb 2el mul mn el for loop abl ma3melaha generate
 
      //////////////////////////////////////////////////////////benesta5dem 2el array deh fe functoin " calculateSummitionHpwl "//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    for (trainingIterations=0;trainingIterations<1000;trainingIterations++)
-    {
-        if (trainingIterations % 10 == 0)
-        {
-            for (int trainingInner = 0; trainingInner < 10; trainingInner++)
-            {
-                arrTraing[trainingIterations + trainingInner][0] = 0.1 + 0.1 * trainingInner;
-                if (trainingIterations < 100)
-                {
-                    arrTraing[trainingIterations + trainingInner][1] = 0.1 + 0.1 * (trainingIterations / 10);
-                }
-                if (trainingIterations > 100)
-                {
-                    arrTraing[trainingIterations + trainingInner][1] = 0.1 + 0.1 * (trainingIterations / 10)-trainingIterations/100;
-                }
-            }
-        }
-        if (trainingIterations % 100 == 0)
-        {
-            for (int trainingOuter = 0; trainingOuter < 100; trainingOuter++)
-            {
-                arrTraing[trainingIterations + trainingOuter][2] = 0.1 + 0.1 * (trainingIterations / 100);
-            }
-        }
-    }
+
     for (int np = 0; np < nets; np++)netPriority[np][0] = 1;
     netPriority[0][0] = 30;
     netPriority[1][0] = 30;
@@ -956,7 +922,7 @@ int main()
             float T = 1000;
             float Tmin = 0.1;
             float alpha = 0.9;
-            float numIterations = 3000;
+            float numIterations = 2000;
 
             int randomModuleSelectionX; int randomModuleSelectionY; float overlapTerm; float costNew; float deltaCost;
             float randomXForModule; float randomYForModule;
@@ -1079,11 +1045,7 @@ int main()
                     //cout << endl << " Lavg= " << Lavg << " Area avg= " << Aavg << " ThermalConst avg= " << Tnormn <<endl;
 
                     //cout << endl << " Lnormalized= " << aold*Lnormn << " Area normalized= " << bold*Anormn << " ThermalConst normalized= " << cold*Tnormn << endl;
-                    for(int trainingIteration=0;trainingIteration<1000;trainingIteration++)
-                    { 
-                        aold = arrTraing[trainingIteration][0];
-                        bold = arrTraing[trainingIteration][1];
-                        cold = arrTraing[trainingIteration][2];
+
 
                     costNew = aold * Lnormn + bold * Anormn + cold * Tnormn + dold * aspectRatioNew;
 
@@ -1101,20 +1063,15 @@ int main()
                             if (costNew <= minSol) {
 
                                 minSol = costNew;
-                                arrLength[trainingIteration][0] = Lnew;
                                 Lmin = Lnew;
-                                arrThermal[trainingIteration][0] = newThermalConst;
                                 chosenThermalConst = newThermalConst;
                                 chosenAspectRatio = aspectRatioNew;
                                 for (int i = 0; i < noOfModules; i++)
                                 {
-                                    arrCoordinatesTrain[trainingIteration][2 * i] = arrCoordenat[i][0];
-                                    arrCoordinatesTrain[trainingIteration][2 * i+1] = arrCoordenat[i][1];
                                     arrMinCoordinatesArray[i] = arrCoordenat[i];
                                 }
                                 // printArray(arrMinCoordinatesArray,noOfModules,2);
                                 areaMin = totalArea(arrMinCoordinatesArray, arrModuleDimension, noOfModules);
-                                arrArea[trainingIteration][0] = areaMin;
                             }
 
                         }
@@ -1264,7 +1221,4 @@ int main()
     printArray(arrMinHpwlArrayAll, mul, 1);
     cout << endl << "get average array" << endl;
     printArray(arrGetAverage, 1, 4);
-    printArray(arrTraing, 1000, 3);
-
-}
 }
