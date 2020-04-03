@@ -576,6 +576,7 @@ int main()
     float** arrLength;
     float** arrThermal;
     float** arrCoordinatesTrain;
+    float** arrCostTraining;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     int arrHpwlnew[5] = { 0 };
@@ -633,6 +634,7 @@ int main()
     arrLength = generateArray(1000, 1);
     arrThermal = generateArray(1000, 1);
     arrCoordinatesTrain = generateArray(1000, 14);
+    arrCostTraining = generateArray(1000, 1);
     // arrGenerateCombinations = generateArray(mul, noOfModules); //me3arafhaa ta7t 3ashan me7tag 2a7seb 2el mul mn el for loop abl ma3melaha generate
 
      //////////////////////////////////////////////////////////benesta5dem 2el array deh fe functoin " calculateSummitionHpwl "//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1101,6 +1103,7 @@ int main()
                             if (costNew <= minSol) {
 
                                 minSol = costNew;
+                                arrCoordinatesTrain[trainingIteration][0] = minSol;
                                 arrLength[trainingIteration][0] = Lnew;
                                 Lmin = Lnew;
                                 arrThermal[trainingIteration][0] = newThermalConst;
